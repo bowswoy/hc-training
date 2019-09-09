@@ -11,7 +11,6 @@ if (mysqli_connect_errno()) {
     $sql = 'SELECT COUNT(pie_id) AS cc,  pie_geo FROM pie_data GROUP BY pie_geo';
     $query = mysqli_query($con, $sql);
     while($row = mysqli_fetch_assoc($query)) {
-        // echo $row['pie_geo'];
         $data[] = array($row['pie_geo'], (int) $row['cc']);
     }
     // $data = array(

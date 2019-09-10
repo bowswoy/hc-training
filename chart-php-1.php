@@ -1,42 +1,30 @@
 <?php
-// echo rand(10,100);
-
 $data = array(
-    array('ส่วนกลาง', rand(10,100)),
-    array('ภาคกลาง', rand(10,100)),
-    array('ภาคเหนือ', rand(10,100)),
-    array('ภาคอีสาน', rand(10,100)),
-    array('ภาคใต้', rand(10,100)),
-    array('ชายแดนใต้', rand(10,100)),
+    array('name'=>'ส่วนกลาง', 'y'=>6141),
+    array('name'=>'ภาคเหนือ', 'y'=>1184),
+    array('name'=>'ภาคกลาง', 'y'=>1085),
+    array('name'=>'ภาคตะวันออกเฉียงเหนือ', 'y'=>467),
+    array('name'=>'ภาคตะวันออก', 'y'=>418),
+    array('name'=>'ภาคใต้', 'y'=>164),
+    array('name'=>'ชายแดนภาคใต้', 'y'=>120),
 );
-
-// echo '<pre>';
-// // print_r($data);
-// echo json_encode($data);
-// echo '</pre>';
-
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
 </head>
-
-<body>
-    <div id="container" style="width:100%; height:400px;"></div>
+<body class="pt-5">
+    <div id="map1">Loading..</div>
 
     <script src="highcharts/highcharts.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            Highcharts.chart('container', {
+            Highcharts.chart('map1', {
                 chart: {
                     plotBackgroundColor: null,
                     plotBorderWidth: null,
@@ -44,13 +32,13 @@ $data = array(
                     type: 'pie'
                 },
                 title: {
-                    text: 'สถิติข้อมูลการให้บริการประชาชน รายภูมิภาค'
+                    text: 'ข้อมูลจำนวนการให้บริการประชาชน ปีงบประมาณ 2562'
                 },
                 subtitle: {
-                    text: 'ข้อมูล ณ วันที่ <?php echo date("d/m/Y"); ?>'
+                    text: 'ข้อมูล ณ วันที่ 1 กันยายน 2562'
                 },
                 tooltip: {
-                    pointFormat: '{series.name}: <b>{point.y} ราย</b>'
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
                 },
                 plotOptions: {
                     pie: {
@@ -58,12 +46,12 @@ $data = array(
                         cursor: 'pointer',
                         dataLabels: {
                             enabled: true,
-                            format: '<b>{point.name}</b>: {point.percentage:.2f} %'
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
                         }
                     }
                 },
                 series: [{
-                    name: 'จำนวน',
+                    name: 'จำนวนการให้บริการ',
                     colorByPoint: true,
                     data: <?php echo json_encode($data); ?>
                 }]
@@ -71,5 +59,4 @@ $data = array(
         });
     </script>
 </body>
-
 </html>

@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
 </head>
-
-<body>
-    <div id="container" style="width:100%; height:400px;"></div>
+<body class="pt-5">
+    <div id="map1">Loading..</div>
 
     <script src="highcharts/highcharts.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            Highcharts.chart('container', {
+            Highcharts.chart('map1', {
                 chart: {
                     plotBackgroundColor: null,
                     plotBorderWidth: null,
@@ -23,13 +21,13 @@
                     type: 'pie'
                 },
                 title: {
-                    text: 'สถิติข้อมูลการให้บริการประชาชน รายภูมิภาค'
+                    text: 'ข้อมูลจำนวนการให้บริการประชาชน ปีงบประมาณ 2562'
                 },
                 subtitle: {
-                    text: 'ข้อมูล ณ วันที่ <?php echo date("d/m/Y"); ?>'
+                    text: 'ข้อมูล ณ วันที่ 1 กันยายน 2562'
                 },
                 tooltip: {
-                    pointFormat: '{series.name}: <b>{point.y} ราย</b>'
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
                 },
                 plotOptions: {
                     pie: {
@@ -37,25 +35,38 @@
                         cursor: 'pointer',
                         dataLabels: {
                             enabled: true,
-                            format: '<b>{point.name}</b>: {point.percentage:.2f} %'
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
                         }
                     }
                 },
                 series: [{
-                    name: 'จำนวน',
+                    name: 'จำนวนการให้บริการ',
                     colorByPoint: true,
-                    data: [
-                        ['ส่วนกลาง', 30],
-                        ['ภาคกลาง', 20],
-                        ['ภาคเหนือ', 25],
-                        ['ภาคอีสาน', 15],
-                        ['ภาคใต้', 15],
-                        ['ชายแดนใต้', 5]
-                    ]
+                    data: [{
+                        name: 'ส่วนกลาง',
+                        y: 6141
+                    }, {
+                        name: 'ภาคเหนือ',
+                        y: 1184
+                    }, {
+                        name: 'ภาคกลาง',
+                        y: 1085
+                    }, {
+                        name: 'ภาคตะวันออกเฉียงเหนือ',
+                        y: 467
+                    }, {
+                        name: 'ภาคตะวันออก',
+                        y: 418
+                    }, {
+                        name: 'ภาคใต้',
+                        y: 164
+                    }, {
+                        name: 'ชายแดนภาคใต้',
+                        y: 120
+                    }]
                 }]
             });
         });
     </script>
 </body>
-
 </html>

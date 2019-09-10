@@ -48,20 +48,7 @@ $data = array(
                     text: 'ข้อมูล ณ วันที่ <?php echo date("d/m/Y"); ?>'
                 },
                 xAxis: {
-                    categories: [
-                        'Jan',
-                        'Feb',
-                        'Mar',
-                        'Apr',
-                        'May',
-                        'Jun',
-                        'Jul',
-                        'Aug',
-                        'Sep',
-                        'Oct',
-                        'Nov',
-                        'Dec'
-                    ],
+                    categories: <?php echo json_encode($categories); ?>,
                     crosshair: true
                 },
                 yAxis: {

@@ -17,8 +17,8 @@ $categories = array(
 );
 
 $data = array(
-    array('name'=>'เรื่องรับ', 'data'=>array(499, 715, 1064, 1292, 1440, 1760, 1356, 1485, 2164, 1941, 956, 54)),
-    array('name'=>'เสร็จภายใน 21 วัน', 'data'=>array(400, 700, 1000, 1200, 1400, 1700, 1300, 1400, 2100, 1900, 900, 50)),
+    array('name'=>'เรื่องรับ', 'color'=>'green', 'data'=>array(499, 715, 1064, 1292, 1440, 1760, 1356, 1485, 2164, 1941, 956, 54)),
+    array('name'=>'เสร็จภายใน 21 วัน', 'color'=>'blue', 'data'=>array(400, 700, 1000, 1200, 1400, 1700, 1300, 1400, 2100, 1900, 900, 50)),
 );
 ?>
 <!DOCTYPE html>
@@ -60,7 +60,7 @@ $data = array(
                 tooltip: {
                     headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                     pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                        '<td style="padding:0"><b>{point.y:.1f} ราย</b></td></tr>',
+                        '<td style="padding:0"><b>{point.y} ราย</b></td></tr>',
                     footerFormat: '</table>',
                     shared: true,
                     useHTML: true
@@ -71,15 +71,7 @@ $data = array(
                         borderWidth: 0
                     }
                 },
-                series: [{
-                    name: 'เรื่องรับ',
-                    data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-
-                }, {
-                    name: 'เสร็จภายใน 21 วัน',
-                    data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
-
-                }]
+                series: <?php echo json_encode($data); ?>
             });
         });
     </script>
